@@ -7,14 +7,14 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: todosql
     build:
-        context: .
+        context: server
         dockerfile: Dockerfile
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
   app:
-    build: .
+    build: server
     depends_on:
       - postgres
     command: bash -c "/usr/local/bin/setup.sh"
