@@ -8,7 +8,6 @@ $$
 DECLARE
     inserted_record JSON;
 BEGIN
-    -- Insert the new to-do item and return the inserted row as JSON
     INSERT INTO todos (user_id, title)
     VALUES (user_id, title)
     RETURNING row_to_json(todos) INTO inserted_record;

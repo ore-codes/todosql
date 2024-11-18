@@ -1,11 +1,9 @@
--- Create users table
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL
 );
 
--- Create todos table
 CREATE TABLE todos (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -13,7 +11,6 @@ CREATE TABLE todos (
     completed BOOLEAN DEFAULT FALSE
 );
 
--- Create the auth_tokens table
 CREATE TABLE auth_tokens (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id),
